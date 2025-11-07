@@ -1,0 +1,33 @@
+# Node & pnpm
+node_modules/
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+dist-ssr/
+out/
+cache/
+broadcast/
+
+# Environment & secrets
+.env
+.env.local
+.env.production
+.env.development
+.dev.vars
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Foundry artifacts (redundant safeguards)
+contract/out/
+contract/cache/
+contract/broadcast/
