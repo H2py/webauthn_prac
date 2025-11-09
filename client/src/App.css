@@ -1,42 +1,277 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@layer base {
+  :root {
+    font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #0f172a;
+    background-color: #f5f7fb;
   }
+}
+
+.app-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  text-align: left;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.subtitle {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: #475569;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #fff;
+  transition: opacity 120ms ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.status-message {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status-message.error {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-message.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  border: 3px solid rgba(37, 99, 235, 0.3);
+  border-top-color: #2563eb;
+  animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.account-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.qr-section,
+.details {
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.qr-section button {
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.details {
+  text-align: left;
+}
+
+.details code {
+  display: block;
+  word-break: break-all;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-top: 0.5rem;
+}
+
+.deposits-panel,
+.refund-panel {
+  background: #f8fafc;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+}
+
+.deposits-panel header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge-live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.badge-idle {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+.badge-error {
+  background: rgba(248, 113, 113, 0.2);
+  color: #b91c1c;
+}
+
+.deposit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.deposit-card {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  color: inherit;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid transparent;
+  transition: border-color 120ms ease, transform 120ms ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.deposit-card.selected {
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}
+
+.deposit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.deposit-row strong {
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pill-ready {
+  background: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.pill-pending {
+  background: rgba(250, 204, 21, 0.2);
+  color: #92400e;
+}
+
+.pill-muted {
+  background: rgba(148, 163, 184, 0.3);
+  color: #475569;
+}
+
+.refund-panel button {
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.tx-link {
+  margin-top: 0.75rem;
+}
+
+.tx-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.error-text {
+  color: #b91c1c;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.5rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .qr-section {
+    padding: 1rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  button {
+    width: 100%;
+  }
 }
